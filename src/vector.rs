@@ -69,7 +69,7 @@ impl Vector {
     /// Calculates the dot product of itself and another vector
     /// # Examples
     /// ```
-    /// use myelin_geometry::Vector;
+    /// use thales::Vector;
     /// // a · b = c
     /// let a = Vector { x: 2.0, y: 3.0 };
     /// let b = Vector { x: -4.0, y: 10.0 };
@@ -83,7 +83,7 @@ impl Vector {
     /// Calculates the cross product of itself and another vector
     /// # Examples
     /// ```
-    /// use myelin_geometry::Vector;
+    /// use thales::Vector;
     /// // a × b = c
     /// let a = Vector { x: 2.0, y: 3.0 };
     /// let b = Vector { x: -4.0, y: 10.0 };

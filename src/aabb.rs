@@ -27,14 +27,14 @@ impl Aabb {
     ///
     /// ## From tuples
     /// ```
-    /// use myelin_geometry::Aabb;
+    /// use thales::Aabb;
     ///
     /// let area = Aabb::try_new((10.0, 0.0), (20.0, 10.0)).expect("Invalid aabb");
     /// ```
     ///
     /// ## From points
     /// ```
-    /// use myelin_geometry::{Aabb, Point};
+    /// use thales::{Aabb, Point};
     ///
     /// let area =
     ///     Aabb::try_new(Point { x: 0.0, y: 10.0 }, Point { x: 20.0, y: 20.0 }).expect("Invalid aabb");

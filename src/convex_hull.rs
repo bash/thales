@@ -5,7 +5,7 @@ use crate::Point;
 /// ## Examples
 ///
 /// ```
-/// use myelin_geometry::{ConvexHull, Point};
+/// use thales::{ConvexHull, Point};
 ///
 /// let convex_hull = ConvexHull::try_new(&[
 ///     Point { x: 0.0, y: 0.0 },
