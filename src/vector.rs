@@ -1,3 +1,4 @@
+use crate::linear_transformations::{self, LinearTransformation};
 use crate::radians::Radians;
 use crate::Point;
 use serde::{Deserialize, Serialize};
@@ -130,30 +131,20 @@ impl Vector {
 
     /// Rotate a vector by the given amount (counterclockwise)
     pub fn rotate(self, rotation: Radians) -> Self {
-        // Radians are contained in the range [0.0; 2π).
-        // However, the rotation should be applied counterclockwise, so we invert this value.
-        let adjusted_rotation = -rotation.value();
+        self.transform(linear_transformations::Rotation::new(rotation))
+    }
 
-        let (rotation_sin, rotation_cos) = adjusted_rotation.sin_cos();
-        let rotated_x = rotation_cos * self.x + rotation_sin * self.y;
-        let rotated_y = -rotation_sin * self.x + rotation_cos * self.y;
-
-        Vector {
-            x: rotated_x,
-            y: rotated_y,
-        }
+    /// TODO
+    pub fn transform(self, transformation: impl LinearTransformation) -> Self {
+        transformation.as_matrix() * self
     }
 
     /// Rotate a vector by the given amount (clockwise)
     pub fn rotate_clockwise(self, rotation: Radians) -> Self {
-        let (rotation_sin, rotation_cos) = rotation.value().sin_cos();
-        let rotated_x = rotation_cos * self.x + rotation_sin * self.y;
-        let rotated_y = -rotation_sin * self.x + rotation_cos * self.y;
-
-        Vector {
-            x: rotated_x,
-            y: rotated_y,
-        }
+        self.transform(linear_transformations::Rotation::new_with_direction(
+            rotation,
+            linear_transformations::Direction::Clockwise,
+        ))
     }
 
     /// Negates the vector, returning a vector with the same magnitude pointing in the opposite direction.
