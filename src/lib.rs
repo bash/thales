@@ -20,6 +20,9 @@ pub use self::polygon::*;
 mod vector;
 pub use self::vector::*;
 
+mod matrix;
+pub use self::matrix::*;
+
 mod point;
 pub use self::point::*;
 
