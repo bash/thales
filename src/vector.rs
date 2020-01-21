@@ -141,8 +141,8 @@ impl Vector {
     /// use thales::{Radians, Vector};
     ///
     /// let vector = Vector { x: 5.0, y: 7.0 };
-    /// let rotation = Radians::try_new(1.0);
-    /// let rotated = vector.transform(RotationBuilder::new(rotation).build())
+    /// let rotation = Radians::try_new(1.0).unwrap();
+    /// let rotated = vector.transform(RotationBuilder::new(rotation).build());
     /// ```
     pub fn transform(self, transformation: impl LinearTransformation) -> Self {
         transformation.as_matrix() * self
