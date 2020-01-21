@@ -9,13 +9,13 @@ pub use rotation::*;
 /// A 2x2 matrix
 #[derive(Debug, Clone, PartialEq, PartialOrd)]
 pub struct Matrix {
-    /// TODO
+    /// Row 1, Column 1
     pub a: f64,
-    /// TODO
+    /// Row 1, Column 2
     pub b: f64,
-    /// TODO
+    /// Row 2, Column 1
     pub c: f64,
-    /// TODO
+    /// Row 2, Column 2
     pub d: f64,
 }
 
@@ -32,6 +32,6 @@ impl Mul<Vector> for Matrix {
 
 /// A linear transformation that can be applied to a point.
 pub trait LinearTransformation {
-    /// TODO
+    /// Returns the matrix that represents this linear transformation.
     fn as_matrix(&self) -> Matrix;
 }

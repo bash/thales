@@ -3,16 +3,16 @@ use crate::radians::Radians;
 
 /// TODO
 #[derive(Debug, Copy, Clone, Eq, PartialEq)]
-pub enum Direction {
+pub enum RotationDirection {
     /// TODO
     Clockwise,
     /// TODO
     Counterclockwise,
 }
 
-impl Default for Direction {
+impl Default for RotationDirection {
     fn default() -> Self {
-        Direction::Counterclockwise
+        Self::Counterclockwise
     }
 }
 
@@ -20,26 +20,43 @@ impl Default for Direction {
 #[derive(Debug, PartialEq, Clone)]
 pub struct Rotation {
     angle: Radians,
-    direction: Direction,
+    direction: RotationDirection,
 }
 
-impl Rotation {
-    /// TODO
+/// Builder used to construct a [`Rotation`].
+#[derive(Debug, PartialEq, Clone)]
+pub struct RotationBuilder {
+    angle: Radians,
+    direction: RotationDirection,
+}
+
+impl RotationBuilder {
+    /// Creates a new [`RotationBuilder`].
     pub fn new(angle: Radians) -> Self {
-        Self::new_with_direction(angle, Direction::default())
+        Self {
+            angle,
+            direction: RotationDirection::default(),
+        }
     }
 
-    /// TODO
-    pub fn new_with_direction(angle: Radians, direction: Direction) -> Self {
-        Self { angle, direction }
+    /// Configures the direction of this rotation.
+    pub fn direction(mut self, direction: RotationDirection) -> Self {
+        self.direction = direction;
+        self
+    }
+
+    /// Finalizes this builder, returning a [`Rotation`].
+    pub fn build(self) -> Rotation {
+        let Self { angle, direction } = self;
+        Rotation { angle, direction }
     }
 }
 
 impl LinearTransformation for Rotation {
     fn as_matrix(&self) -> Matrix {
         let direction = match self.direction {
-            Direction::Counterclockwise => 1.0,
-            Direction::Clockwise => -1.0,
+            RotationDirection::Counterclockwise => 1.0,
+            RotationDirection::Clockwise => -1.0,
         };
         let angle = direction * self.angle.value();
         let (sin, cos) = angle.sin_cos();
