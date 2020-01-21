@@ -1,8 +1,8 @@
-sudo: false
+os: linux
 dist: xenial
 language: rust
 
-matrix:
+jobs:
   include:
     - rust: stable
     - rust: beta
