@@ -35,3 +35,9 @@ pub trait LinearTransformation {
     /// Returns the matrix that represents this linear transformation.
     fn as_matrix(&self) -> Matrix;
 }
+
+impl LinearTransformation for Matrix {
+    fn as_matrix(&self) -> Matrix {
+        self.clone()
+    }
+}
