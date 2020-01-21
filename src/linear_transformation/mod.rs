@@ -33,11 +33,11 @@ impl Mul<Vector> for Matrix {
 /// A linear transformation that can be applied to a point.
 pub trait LinearTransformation {
     /// Returns the matrix that represents this linear transformation.
-    fn as_matrix(&self) -> Matrix;
+    fn to_matrix(&self) -> Matrix;
 }
 
 impl LinearTransformation for Matrix {
-    fn as_matrix(&self) -> Matrix {
+    fn to_matrix(&self) -> Matrix {
         self.clone()
     }
 }

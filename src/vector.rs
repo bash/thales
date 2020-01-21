@@ -145,7 +145,7 @@ impl Vector {
     /// let rotated = vector.transform(RotationBuilder::new(rotation).build());
     /// ```
     pub fn transform(self, transformation: impl LinearTransformation) -> Self {
-        transformation.as_matrix() * self
+        transformation.to_matrix() * self
     }
 
     /// Rotate a vector by the given amount (clockwise)

@@ -53,7 +53,7 @@ impl RotationBuilder {
 }
 
 impl LinearTransformation for Rotation {
-    fn as_matrix(&self) -> Matrix {
+    fn to_matrix(&self) -> Matrix {
         let direction = match self.direction {
             RotationDirection::Counterclockwise => 1.0,
             RotationDirection::Clockwise => -1.0,
