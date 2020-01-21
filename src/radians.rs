@@ -17,8 +17,8 @@ impl Radians {
     ///
     /// ### Examples
     /// ```
-    /// use thales::Radians;
     /// use std::f64::consts::PI;
+    /// use thales::Radians;
     ///
     /// let rotation = Radians::try_new(PI).expect("Value was outside the range [0.0; 2π)");
     /// ```
@@ -42,9 +42,9 @@ impl Radians {
     ///
     /// ### Examples
     /// ```
-    /// use thales::Radians;
     /// use std::f64::consts::FRAC_PI_2;
     /// use std::f64::consts::PI;
+    /// use thales::Radians;
     ///
     /// use nearly_eq::assert_nearly_eq;
     ///
