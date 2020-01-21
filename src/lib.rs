@@ -29,4 +29,4 @@ pub use self::convex_hull::*;
 mod intersects;
 pub use self::intersects::*;
 
-pub mod linear_transformations;
+pub mod linear_transformation;

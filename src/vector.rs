@@ -1,4 +1,4 @@
-use crate::linear_transformations::{self, LinearTransformation};
+use crate::linear_transformation::{self, LinearTransformation};
 use crate::radians::Radians;
 use crate::Point;
 use serde::{Deserialize, Serialize};
@@ -131,7 +131,7 @@ impl Vector {
 
     /// Rotate a vector by the given amount (counterclockwise)
     pub fn rotate(self, rotation: Radians) -> Self {
-        self.transform(linear_transformations::Rotation::new(rotation))
+        self.transform(linear_transformation::Rotation::new(rotation))
     }
 
     /// TODO
@@ -141,9 +141,9 @@ impl Vector {
 
     /// Rotate a vector by the given amount (clockwise)
     pub fn rotate_clockwise(self, rotation: Radians) -> Self {
-        self.transform(linear_transformations::Rotation::new_with_direction(
+        self.transform(linear_transformation::Rotation::new_with_direction(
             rotation,
-            linear_transformations::Direction::Clockwise,
+            linear_transformation::Direction::Clockwise,
         ))
     }
 
